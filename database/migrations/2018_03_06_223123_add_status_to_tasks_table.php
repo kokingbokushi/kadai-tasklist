@@ -13,10 +13,10 @@ class AddStatusToTasksTable extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned()->index();
+            
             $table->string('status', 10);
             
-            $table->foreign('user_id')->references('id')->on('users');
+            
         });
     }
 
