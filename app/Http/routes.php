@@ -11,13 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/', 'WelcomeController@index');
-
-Route::resource('tasks', 'TasksController');
 
 Route::get('signup', 'Auth\AuthController@getRegister')->name('signup.get');
 Route::post('signup', 'Auth\AuthController@postRegister')->name('signup.post');
@@ -28,5 +23,5 @@ Route::get('logout', 'Auth\AuthController@getLogout')->name('logout.get');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
-    Route::resource('tasks', 'TasksController', ['only' => ['store', 'destroy']]);
+    Route::resource('tasks', 'TasksController');
 });
