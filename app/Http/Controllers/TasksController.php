@@ -18,14 +18,9 @@ class TasksController extends Controller
      */
     public function index()
     {
-        $task = Task::find($id);
+        $task = new Task;
         $user = \Auth::user();
-        if ($user->id === $task->user_id)
-        {
-            return view('tasks.index', [
-                'task' => $task,
-            ]);
-        }
+        
         return redirect('/');
     }
 
@@ -36,7 +31,7 @@ class TasksController extends Controller
      */
     public function create()
     {
-        $task = new Task;
+        
 
         return view('tasks.create', [
             'task' => $task,
